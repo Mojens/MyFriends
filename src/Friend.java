@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Friend {
@@ -67,15 +66,17 @@ public class Friend {
     setPhone(input.nextLine());
     System.out.print("Type the E-Mail: ");
     seteMail(input.nextLine());
+
     Friend friend = new Friend(this.name, this.phone, this.eMail);
     Main.friendList.add(friend);
+
     System.out.println("\nYou have entered: ");
     System.out.println("name: " + getName());
     System.out.println("phonenumber: " + getPhone());
     System.out.println("E-Mail: " + geteMail());
     System.out.println("\n-----------------------------------\n");
     new Main().menuRun();
-  } //Den her tilføjer kun player til ArrayListen
+  } //Den her tilføjer kun Friend objektet til ArrayListen
 
   public void deleteFriend() {
     Scanner input = new Scanner(System.in);
@@ -105,14 +106,15 @@ public class Friend {
 
   public void loadList() throws IOException {
     File fr = new File(fileName);
-    Scanner sc = new Scanner(fr);
-    while (sc.hasNextLine()) {
-      String lines = sc.nextLine();
+    Scanner scan = new Scanner(fr);
+    while (scan.hasNextLine()) {
+      String lines = scan.nextLine();
       System.out.println(lines);
     }
     new Main().menuRun();
   } //Denne indlæser din filer og viser hvad for nogle værdier du har gemt
 }
+
 
 
 
