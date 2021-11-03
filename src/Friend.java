@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Friend {
@@ -6,7 +7,6 @@ public class Friend {
   private String phone;
   private String eMail;
   private final String fileName;
-  private int counter = 0;
 
 
   public Friend(String name, String phone, String eMail) {
@@ -19,10 +19,10 @@ public class Friend {
   public Friend() {
 
     fileName = "ListOfFriends.txt";
-  }
+  } //Uden parmetre
 
   public String toString() {
-    return "\nFriend index: "+counter+"\n"+"Name: " + name + "\n" +
+    return "\nFriend index: "+"\n"+"Name: " + name + "\n" +
         "Phone: " + phone + "\n" +
         "E-Mail: " + eMail + "\n";
   } //toString metode
@@ -59,7 +59,6 @@ public class Friend {
   } //Denne viser din nuværende ArrayListe
 
   public void enterNewFriend() {
-    this.counter++;
     Scanner input = new Scanner(System.in);
     System.out.println("-----------------------------------\n");
     System.out.print("Type the name: ");
@@ -86,7 +85,7 @@ public class Friend {
     System.out.print("Type the index: ");
     int index = input.nextInt();
     Main.friendList.remove(index);
-    System.out.println("Friend "+this.counter+"Its now deleted!");
+    System.out.println("Friend "+" Its now deleted!");
     System.out.println("\n-----------------------------------\n");
     new Main().menuRun();
   } //Den her sletter fra nuværende Session / ArrayListe
