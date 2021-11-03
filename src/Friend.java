@@ -6,9 +6,11 @@ public class Friend {
   private String phone;
   private String eMail;
   private final String fileName;
+  public int friendNumber = 0;
 
 
-  public Friend(String name, String phone, String eMail) {
+  public Friend(int friendNumber, String name, String phone, String eMail) {
+    this.friendNumber = friendNumber;
     this.name = name;
     this.phone = phone;
     this.eMail = eMail;
@@ -21,7 +23,7 @@ public class Friend {
   } //Uden parmetre
 
   public String toString() {
-    return "\nFriend index: "+"\n"+"Name: " + name + "\n" +
+    return "\nFriend index: " +friendNumber+ "\n" + "Name: " + name + "\n" +
         "Phone: " + phone + "\n" +
         "E-Mail: " + eMail + "\n";
   } //toString metode
@@ -66,8 +68,10 @@ public class Friend {
     setPhone(input.nextLine());
     System.out.print("Type the E-Mail: ");
     seteMail(input.nextLine());
-
-    Friend friend = new Friend(this.name, this.phone, this.eMail);
+    for (Friend friendo : Main.friendList) {
+      friendNumber++;
+    }
+    Friend friend = new Friend(friendNumber,this.name, this.phone, this.eMail);
     Main.friendList.add(friend);
 
     System.out.println("\nYou have entered: ");
@@ -86,17 +90,21 @@ public class Friend {
     System.out.print("Type the index: ");
     int index = input.nextInt();
     Main.friendList.remove(index);
-    System.out.println("Friend "+" Its now deleted!");
+    System.out.println("Friend " + " Its now deleted!");
     System.out.println("\n-----------------------------------\n");
+    for (Friend friend : Main.friendList) {
+      if (friendNumber!=0) {
+        friendNumber--;
+      }
+    }
     new Main().menuRun();
   } //Den her sletter fra nuværende Session / ArrayListe
 
   public void saveList() throws IOException {
-    try(FileWriter fw = new FileWriter("ListOfFriends.txt", true); //Bruger FileWriter da jeg skal
-        // Appende indholdet over til min fil uden at slette det forrige informationer
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter out = new PrintWriter(bw))
-    {
+    try (FileWriter fw = new FileWriter("ListOfFriends.txt", true); //Bruger FileWriter da jeg skal
+         // Appende indholdet over til min fil uden at slette det forrige informationer
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter out = new PrintWriter(bw)) {
       out.println(Main.friendList);
     } catch (IOException e) {
       //exception handling left as an exercise for the reader
