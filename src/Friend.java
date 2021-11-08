@@ -2,18 +2,21 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Friend {
+
+  private static int friendNumberCounter = 0;
+
   private String name;
   private String phone;
   private String eMail;
   private final String fileName;
-  public int friendNumber = 0;
+  private int friendNumber;
 
 
-  public Friend(int friendNumber, String name, String phone, String eMail) {
-    this.friendNumber = friendNumber;
+  public Friend(String name, String phone, String eMail) {
     this.name = name;
     this.phone = phone;
     this.eMail = eMail;
+    this.friendNumber = friendNumberCounter++;
     fileName = "ListOfFriends.txt";
   } //Konstruktør med parmetre
 
@@ -68,10 +71,7 @@ public class Friend {
     setPhone(input.nextLine());
     System.out.print("Type the E-Mail: ");
     seteMail(input.nextLine());
-    for (Friend friendo : Main.friendList) {
-      friendNumber++;
-    }
-    Friend friend = new Friend(friendNumber,this.name, this.phone, this.eMail);
+    Friend friend = new Friend(this.name, this.phone, this.eMail);
     Main.friendList.add(friend);
 
     System.out.println("\nYou have entered: ");
@@ -116,6 +116,7 @@ public class Friend {
     new Main().menuRun();
 
      */
+    new Main().menuRun();
   } //Den her gemmer indholdet af Arraylisten ind i filen "ListOfFriends.txt"
 
   public void loadList() throws IOException {
