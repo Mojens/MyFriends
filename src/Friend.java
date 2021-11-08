@@ -101,7 +101,11 @@ public class Friend {
   } //Den her sletter fra nuværende Session / ArrayListe
 
   public void saveList() throws IOException {
-    try (FileWriter fw = new FileWriter("ListOfFriends.txt", true); //Bruger FileWriter da jeg skal
+    PrintStream pr = new PrintStream(new File(fileName));
+    for (Friend friend : Main.friendList){
+      pr.println(Main.friendList.toString());
+    }
+    /*try (FileWriter fw = new FileWriter("ListOfFriends.txt", true); //Bruger FileWriter da jeg skal
          // Appende indholdet over til min fil uden at slette det forrige informationer
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter out = new PrintWriter(bw)) {
@@ -110,6 +114,8 @@ public class Friend {
       //exception handling left as an exercise for the reader
     }
     new Main().menuRun();
+
+     */
   } //Den her gemmer indholdet af Arraylisten ind i filen "ListOfFriends.txt"
 
   public void loadList() throws IOException {

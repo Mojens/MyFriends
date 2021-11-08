@@ -1,0 +1,22 @@
+[
+Friend index: 0
+Name: KASPER
+Phone: KASPER
+E-Mail: KASPER
+, 
+Friend index: 1
+Name: KASPER
+Phone: OLE
+E-Mail: JAKOBSEN
+]
+[
+Friend index: 0
+Name: KASPER
+Phone: KASPER
+E-Mail: KASPER
+, 
+Friend index: 1
+Name: KASPER
+Phone: OLE
+E-Mail: JAKOBSEN
+]
